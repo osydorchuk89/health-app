@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export const SocialMediaBar = () => {
+interface SocialMediaBarProps {
+    alignment: string;
+}
+
+export const SocialMediaBar = ({ alignment }: SocialMediaBarProps) => {
     const socialMediaLinks = [
         {
             src: "/telegram.png",
@@ -20,8 +24,13 @@ export const SocialMediaBar = () => {
         },
     ];
 
+    const style =
+        alignment === "vertical"
+            ? "flex flex-col justify-between gap-14"
+            : "flex justify-between gap-14";
+
     return (
-        <ul className="flex flex-col justify-between gap-14">
+        <ul className={style}>
             {socialMediaLinks.map((link) => (
                 <Link key={link.src} href={link.href}>
                     <Image

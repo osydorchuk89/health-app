@@ -1,4 +1,4 @@
-import { Button } from "../Button";
+import { Button } from "../DarkButton";
 import { SocialMediaBar } from "../SocialMediaBar";
 
 export const HeroSection = () => {
@@ -11,7 +11,7 @@ export const HeroSection = () => {
                     <Button text="консультація" />
                 </div>
             </div>
-            <SocialMediaBar />
+            <SocialMediaBar alignment="vertical" />
         </div>
     );
 };
