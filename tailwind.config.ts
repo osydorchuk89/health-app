@@ -7,10 +7,12 @@ export default {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
-        colors: {
-            primary: "#F4F2C9",
-            accent: "#00AA4F",
-            neutral: "#D9D9D9",
+        extend: {
+            colors: {
+                primary: "#F4F2C9",
+                accent: "#00AA4F",
+                neutral: "#D9D9D9",
+            },
         },
         fontSize: {
             xxs: "16px",
@@ -22,6 +24,11 @@ export default {
             "2xl": "46px",
             "3xl": "70px",
             "4xl": "110px",
+        },
+        boxShadow: {
+            custom: "0px 0px 8px 0px #00AA4F",
+            light: "0px 0px 4px 0px #00000040",
+            dark: "0px 0px 4px 0px #00000073",
         },
     },
     plugins: [],

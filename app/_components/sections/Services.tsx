@@ -1,3 +1,9 @@
+"use client";
+
+import { useInView } from "react-intersection-observer";
+
+import { navigationActions } from "@/app/_store";
+import { useAppDispatch } from "@/app/_store/hooks";
 import { ServiceCard } from "../ServiceCard";
 
 const serviceArticles = [
@@ -28,18 +34,25 @@ const serviceArticles = [
 ];
 
 export const Services = () => {
+    const dispatch = useAppDispatch();
+
+    const { ref } = useInView({
+        rootMargin: "-50% 0% -50% 0%",
+        onChange: (inView) => {
+            inView && dispatch(navigationActions.change("services"));
+        },
+    });
 
     return (
-        <div className="flex flex-col gap-10 p-20">
+        <div id="services" ref={ref} className="flex flex-col gap-10 p-20">
             <p className="text-3xl">які послуги ми надаємо</p>
             <div className="grid grid-cols-3 gap-5">
-                {serviceArticles.map((article) => (
-                    <ServiceCard
-                        key={article.title}
-                        title={article.title}
-                        text={article.text}
-                    />
-                ))}
+                <ServiceCard text="підписання декларації з сімейним лікарем" />
+                <ServiceCard text="консультація лікаря" />
+                <ServiceCard text="діагностика та профілактика" />
+                <ServiceCard text="консультація психолога" />
+                <ServiceCard text="проведення групових сесій" />
+                <ServiceCard text="консалтинг та освіта" />
             </div>
         </div>
     );

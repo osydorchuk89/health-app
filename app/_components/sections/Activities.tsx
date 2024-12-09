@@ -1,5 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
+
+import { navigationActions } from "@/app/_store";
+import { useAppDispatch } from "@/app/_store/hooks";
+import { ActivityDialog } from "../ActivityDialog";
 
 const activityArticles = [
     {
@@ -20,32 +27,30 @@ const activityArticles = [
     },
 ];
 export const Activities = () => {
-    // const { ref } = useInView({
-    //     rootMargin: "-50% 0% -50% 0%",
-    //     onChange: (inView) => {
-    //         inView && dispatch(navigationActions.change("about"));
-    //     },
-    // });
+    const dispatch = useAppDispatch();
+
+    const { ref } = useInView({
+        rootMargin: "-50% 0% -50% 0%",
+        onChange: (inView) => {
+            inView && dispatch(navigationActions.change("about"));
+        },
+    });
 
     return (
-        <>
+        <div id="activities" ref={ref}>
             <div className="flex flex-col gap-10 p-20">
                 <p className="text-3xl">наша діяльність</p>
                 <div className="grid grid-cols-4 gap-5">
                     {activityArticles.map((article) => (
-                        <article
+                        <ActivityDialog
                             key={article.title}
-                            className="flex flex-col gap-4"
-                        >
-                            <p className="text-xl font-bold">{article.title}</p>
-                            <p className="text-base whitespace-pre-line">
-                                {article.text}
-                            </p>
-                        </article>
+                            title={article.title}
+                            text={article.text}
+                        />
                     ))}
                 </div>
             </div>
-            <div className="flex items-center gap-10 bg-accent p-8">
+            <div className="flex items-center gap-10 bg-accent p-20">
                 <Image
                     src="/big-logo.png"
                     width={640}
@@ -59,6 +64,6 @@ export const Activities = () => {
                     підтримку і впевненість у своєму здоров’ї.
                 </p>
             </div>
-        </>
+        </div>
     );
 };

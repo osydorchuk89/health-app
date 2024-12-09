@@ -38,6 +38,7 @@ export const SocialMediaBar = ({ alignment }: SocialMediaBarProps) => {
                         alt={link.alt}
                         width={24}
                         height={24}
+                        className="hover:grayscale"
                     />
                 </Link>
             ))}

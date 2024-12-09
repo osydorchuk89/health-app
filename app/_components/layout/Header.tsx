@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const headerLinks = [
-    { text: "цінності", href: "/" },
-    { text: "послуги", href: "/" },
-    { text: "діяльність", href: "/" },
-    { text: "команда", href: "/" },
-    { text: "контакти", href: "/" },
+    { text: "цінності", href: "#values" },
+    { text: "послуги", href: "#services" },
+    { text: "діяльність", href: "#activities" },
+    { text: "команда", href: "#team" },
+    { text: "контакти", href: "#contacts" },
 ];
 
 export const Header = () => {
@@ -31,9 +31,6 @@ export const Header = () => {
                     en
                 </Link>
             </div>
-            <p className="text-base absolute bottom-0 right-20">
-                +380992764663
-            </p>
         </header>
     );
 };

@@ -1,7 +1,9 @@
 import { Metadata } from "next";
+
+import { Providers } from "./StoreProvider";
 import { Header } from "./_components/layout/Header";
-import "./globals.css";
 import { Footer } from "./_components/layout/Footer";
+import "./globals.css";
 
 export const metadata: Metadata = {
     title: "нескраю",
@@ -14,12 +16,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html>
-            <body>
-                <Header />
-                {children}
-                <Footer />
-            </body>
-        </html>
+        <Providers>
+            <html lang="en">
+                <body>
+                    <Header />
+                    {children}
+                    <Footer />
+                </body>
+            </html>
+        </Providers>
     );
 }

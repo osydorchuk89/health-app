@@ -5,7 +5,7 @@ export const Footer = () => {
     return (
         <footer className="flex flex-col gap-6 w-full px-20 pt-20 pb-10 bg-primary">
             <div className="flex">
-                <div className="flex gap-4 items-end w-1/2">
+                <div className="flex gap-4 items-end w-2/3">
                     <Image
                         src="/logo.png"
                         height={140}
@@ -16,10 +16,10 @@ export const Footer = () => {
                         <p className="text-accent text-4xl leading-none">
                             нескраю
                         </p>
-                        <p className="text-2xl">захист здоровʼя для всіх</p>
+                        <p className="text-2xl">медико-психологічний хаб</p>
                     </article>
                 </div>
-                <div className="flex justify-end items-center w-1/2">
+                <div className="flex justify-end items-center w-1/3">
                     <SocialMediaBar alignment="horizontal" />
                 </div>
             </div>
