@@ -1,31 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
 import { navigationActions } from "@/app/_store";
 import { useAppDispatch } from "@/app/_store/hooks";
+import { activityArticles } from "@/app/_lib/data";
 import { ActivityDialog } from "../ActivityDialog";
+import { SectionTitle } from "../SectionTitle";
 
-const activityArticles = [
-    {
-        title: "медицина",
-        text: "- підписання декларацій з сімейним лікарем\n- індивідуальні консультації\n- профілактика\n- консультації лікаря-інтерніста\n- онлайн-консультації\n- домашні візити\n- лабораторна та інструментальна діагностика\n- вакцинація\n- медичний супровід",
-    },
-    {
-        title: "психологія",
-        text: "- індивідуальні консультації\n- групи взаємопідтримки\n- онлайн консультації\n- надання першої психологічної допомоги\n- арт-терапія\n- тематичні групи",
-    },
-    {
-        title: "освіта",
-        text: "- практика студентів психологічного факультету\n- безперервний розвиток лікарів «групи рівних»\n- тренінги\n- воркшопи\n- івенти з профорієнтації\n- просвітницька діяльність",
-    },
-    {
-        title: "консалтинг",
-        text: "- консультування бізнесу, громадських організацій, благодійних фондів, органів самоврядування з приводу забезпечення фізичного, психічного та соціального здоров’я персоналу\n- участь доповідачем у конференціях\n- участь експертом у дискусійних панелях\n- долучення до стратегічних сесій",
-    },
-];
 export const Activities = () => {
     const dispatch = useAppDispatch();
 
@@ -37,10 +20,10 @@ export const Activities = () => {
     });
 
     return (
-        <div id="activities" ref={ref}>
-            <div className="flex flex-col gap-10 p-20">
-                <p className="text-3xl">наша діяльність</p>
-                <div className="grid grid-cols-4 gap-5">
+        <div id="activities" ref={ref} className="-scroll-mt-10">
+            <div className="flex flex-col gap-10 px-4 md:px-10 lg:px-20 py-20">
+                <SectionTitle text="наша діяльність"/>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-5">
                     {activityArticles.map((article) => (
                         <ActivityDialog
                             key={article.title}
@@ -50,14 +33,11 @@ export const Activities = () => {
                     ))}
                 </div>
             </div>
-            <div className="flex items-center gap-10 bg-accent p-20">
-                <Image
-                    src="/big-logo.png"
-                    width={640}
-                    height={462}
-                    alt="big logo"
-                />
-                <p className="text-lg">
+            <div className="flex flex-col xl:flex-row items-center gap-10 xl:gap-5 bg-accent px-4 md:px-10 lg:px-20 py-20">
+                <div className="relative w-[320px] h-[230px] xs:w-[358px] xs:h-[258px] sm:w-[640px] sm:h-[462px]">
+                    <Image src="/big-logo.png" fill alt="big logo" />
+                </div>
+                <p className="text-xxs md:text-base xl:w-2/5">
                     наш центр доступний для вас у будь-який час, коли вам
                     потрібна допомога або консультація. ми прагнемо бути поруч у
                     будь-який момент Вашого життя, щоб Ви могли завжди відчувати

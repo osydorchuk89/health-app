@@ -13,6 +13,9 @@ export default {
                 accent: "#00AA4F",
                 neutral: "#D9D9D9",
             },
+            screens: {
+                xs: "390px",
+            },
         },
         fontSize: {
             xxs: "16px",
