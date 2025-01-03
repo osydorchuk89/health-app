@@ -1,10 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { headerLinks } from "@/app/_lib/data";
+import { useAppSelector } from "@/app/_store/hooks";
 import { SideMenu } from "../SideMenu";
+import { LanguageButton } from "../LanguageButton";
 
 export const Header = () => {
+    const { language } = useAppSelector((state) => state.language);
+
     return (
         <header className="flex justify-between items-center w-fullsm:h-40 px-4 md:px-10 lg:px-20 py-12 sm:py-10 bg-primary z-50">
             <Link href="/">
@@ -23,19 +29,16 @@ export const Header = () => {
                     {headerLinks.map((link) => (
                         <Link
                             className="text-xs p-2 border-[3px] border-transparent rounded-lg hover:border-accent active:bg-accent"
-                            key={link.text}
+                            key={link.textEng}
                             href={link.href}
                         >
-                            {link.text}
+                            {language === "ua" ? link.textUkr : link.textEng}
                         </Link>
                     ))}
                 </ul>
-                <Link
-                    className="hidden lg:flex text-xs px-3 py-2 border border-transparent rounded-lg hover:border-accent active:bg-accent"
-                    href="/"
-                >
-                    en
-                </Link>
+                <div className="hidden lg:flex ">
+                    <LanguageButton language={language} />
+                </div>
                 <div className="block lg:hidden">
                     <SideMenu />
                 </div>

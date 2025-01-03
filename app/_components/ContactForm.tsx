@@ -5,20 +5,17 @@ import Image from "next/image";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
+import { useAppSelector } from "../_store/hooks";
 import { ContactSuccessDialog } from "./ContactSuccessDialog";
+import { contactUsText } from "@/app/_lib/data";
 
 const PhoneInputField = forwardRef<HTMLInputElement>((props: any, ref) => {
-    return (
-        <input
-            {...props}
-            ref={ref}
-            // className="border rounded-lg px-4 py-3 w-full"
-            className={props.styles}
-        />
-    );
+    return <input {...props} ref={ref} className={props.styles} />;
 });
 
 export const ContactForm = () => {
+    const { language } = useAppSelector((state) => state.language);
+
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
     const [nameError, setNameError] = useState("");
@@ -39,13 +36,19 @@ export const ContactForm = () => {
             <div className="flex flex-col gap-6 w-full">
                 <div className="flex flex-col gap-3">
                     <label htmlFor="name" className="text-xxs font-bold">
-                        Ваше імʼя
+                        {language === "ua"
+                            ? contactUsText.nameInputTitleUkr
+                            : contactUsText.nameInputTitleEng}
                     </label>
                     <input
                         type="text"
                         name="name"
                         id="name"
-                        placeholder="введіть Ваше імʼя"
+                        placeholder={
+                            language === "ua"
+                                ? contactUsText.nameInputPlaceholderUkr
+                                : contactUsText.nameInputPlaceholderEng
+                        }
                         className={
                             nameError && !nameFieldFocused && nameError
                                 ? errorFieldStyle
@@ -65,7 +68,9 @@ export const ContactForm = () => {
                 </div>
                 <div className="flex flex-col gap-3">
                     <label className="text-xxs font-bold">
-                        Ваш номер телефону
+                        {language === "ua"
+                            ? contactUsText.phoneInputTitleUkr
+                            : contactUsText.phoneInputTitleEng}
                     </label>
                     <PhoneInput
                         defaultCountry="UA"
@@ -73,7 +78,6 @@ export const ContactForm = () => {
                         onChange={setPhoneNumber}
                         international
                         withCountryCallingCode
-                        // className="border rounded-lg px-4 py-3 w-full"
                         inputComponent={PhoneInputField}
                         styles={
                             phoneNumberError &&
@@ -84,11 +88,11 @@ export const ContactForm = () => {
                         }
                         onFocus={() => setPhoneNumberFieldFocused(true)}
                     />
-                {phoneNumberError && !phoneNumberFieldFocused && (
-                    <p className="text-red-700 font-medium">
-                        {phoneNumberError}
-                    </p>
-                )}
+                    {phoneNumberError && !phoneNumberFieldFocused && (
+                        <p className="text-red-700 font-medium">
+                            {phoneNumberError}
+                        </p>
+                    )}
                 </div>
             </div>
             <Image

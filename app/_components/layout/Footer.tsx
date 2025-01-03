@@ -1,7 +1,14 @@
+"use client";
+
 import Image from "next/image";
+
 import { SocialMediaBar } from "../SocialMediaBar";
+import { useAppSelector } from "@/app/_store/hooks";
+import { footerText } from "@/app/_lib/data";
 
 export const Footer = () => {
+    const { language } = useAppSelector((state) => state.language);
+
     return (
         <footer className="flex flex-col gap-6 w-full px-4 md:px-10 lg:px-20 pt-20 pb-10 bg-primary">
             <div className="flex flex-col gap-10 xl:flex-row items-center">
@@ -15,10 +22,14 @@ export const Footer = () => {
                     />
                     <article className="flex justify-end flex-col">
                         <p className="text-accent text-[78px] md:text-4xl leading-none">
-                            нескраю
+                            {language === "ua"
+                                ? footerText.titleUkr
+                                : footerText.titleEng}
                         </p>
                         <p className="text-[24px] md:text-xl lg:text-2xl">
-                            медико-психологічний хаб
+                            {language === "ua"
+                                ? footerText.subtitleUkr
+                                : footerText.subtitleEng}
                         </p>
                     </article>
                 </div>
@@ -28,11 +39,12 @@ export const Footer = () => {
             </div>
             <div className="flex flex-col items-center text-xxs">
                 <p className="text-center">
-                    ФОП Рудковський Богдан Владиславович, ЄДРПОУ 3367101799
+                    {language === "ua" ? footerText.fopUkr : footerText.fopEng}
                 </p>
                 <p className="text-center">
-                    Ліцензія на провадчення медичної практики "Наказ МОЗ України
-                    №2984 від 23.12.2020"
+                    {language === "ua"
+                        ? footerText.licenseUkr
+                        : footerText.licenseEng}
                 </p>
             </div>
         </footer>

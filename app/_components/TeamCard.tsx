@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
+import { useAppSelector } from "../_store/hooks";
 import { LightButton } from "./LightButton";
 import { CloseIcon } from "./icons/CloseIcon";
 
@@ -39,6 +40,7 @@ export const TeamCard = ({
     children,
 }: TeamCardProps) => {
     const [doctorInfoDialogOpen, setDoctorInfoDialogOpen] = useState(false);
+    const { language } = useAppSelector((store) => store.language);
 
     return (
         <div className="relative flex flex-col gap-3 items-start min-w-[310px] h-[450px] bg-primary rounded-3xl p-4">
@@ -55,7 +57,7 @@ export const TeamCard = ({
             </article>
             <div className="absolute bottom-4">
                 <LightButton
-                    text="детальніше"
+                    text={language === "ua" ? "детальніше" : "read more"}
                     handleClick={() => setDoctorInfoDialogOpen(true)}
                 />
                 <Dialog

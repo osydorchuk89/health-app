@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import Image from "next/image";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { isPossiblePhoneNumber } from "react-phone-number-input";
@@ -8,6 +9,7 @@ import { DarkButton } from "./DarkButton";
 import { CloseIcon } from "./icons/CloseIcon";
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { contactFormActions, successContactActions } from "../_store";
+import { contactUsText } from "@/app/_lib/data";
 
 interface ContactSuccessDialogProps {
     name: string;
@@ -31,6 +33,7 @@ export const ContactSuccessDialog = ({
     handlePhoneNumberValue,
 }: ContactSuccessDialogProps) => {
     const { isOpen } = useAppSelector((store) => store.successContactDialog);
+    const { language } = useAppSelector((state) => state.language);
 
     const dispatch = useAppDispatch();
 
@@ -42,23 +45,49 @@ export const ContactSuccessDialog = ({
         const trimmedName = name.trim();
         const trimmedPhoneNumber = phoneNumber.trim();
         if (!trimmedName) {
-            errors.name = "Будь-ласка, введіть Ваше ім'я";
+            errors.name =
+                language === "ua"
+                    ? contactUsText.nameErrorUkr
+                    : contactUsText.nameErrorEng;
         }
         if (!trimmedPhoneNumber) {
-            errors.phoneNumber = "Будь-ласка, введіть Ваш номер телефону";
+            errors.phoneNumber =
+                language === "ua"
+                    ? contactUsText.phoneBlankErrorUkr
+                    : contactUsText.phoneBlankErrorEng;
         }
         if (trimmedPhoneNumber && !isPossiblePhoneNumber(trimmedPhoneNumber)) {
-            errors.phoneNumber = "Будь-ласка, введіть коректний номер телефону";
+            errors.phoneNumber =
+                language === "ua"
+                    ? contactUsText.phoneInvalidErrorUkr
+                    : contactUsText.phoneInvalidErrorEng;
         }
         return errors;
+    };
+
+    const sendTelegramMessage = async (name: string, phoneNumber: string) => {
+        const message = `Ім'я: ${name}, номер телефону: ${phoneNumber}`;
+
+        const telegramToken = process.env.NEXT_PUBLIC_TELEGRAM_TOKEN;
+        const telegramChatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+        const telegramURL = `https://api.telegram.org/bot${telegramToken}/sendMessage?chat_id=${telegramChatId}&text=${message}`;
+        try {
+            await axios.get(telegramURL);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
         <>
             <DarkButton
-                text="передзвонити"
+                text={
+                    language === "ua"
+                        ? contactUsText.buttonUkr
+                        : contactUsText.buttonEng
+                }
                 type="submit"
-                handleClick={(event) => {
+                handleClick={async (event) => {
                     event.preventDefault();
                     const errors = validateInput(name, phoneNumber);
                     if (errors.name || errors.phoneNumber) {
@@ -68,6 +97,9 @@ export const ContactSuccessDialog = ({
                         handlePhoneNumberFieldFocus(false);
                         return;
                     }
+
+                    await sendTelegramMessage(name, phoneNumber);
+
                     handleNameValue("");
                     handlePhoneNumberValue("");
                     dispatch(successContactActions.openDialog());

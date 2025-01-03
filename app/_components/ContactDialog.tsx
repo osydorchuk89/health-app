@@ -11,13 +11,14 @@ import { contactFormActions } from "../_store";
 
 export const ContactDialog = () => {
     const { isOpen } = useAppSelector((store) => store.contactFormDialog);
+    const { language } = useAppSelector((store) => store.language);
 
     const dispatch = useAppDispatch();
 
     return (
         <>
             <DarkButton
-                text="консультація"
+                text={language === "ua" ? "консультація" : "consultation"}
                 handleClick={(event) => {
                     event.preventDefault();
                     dispatch(contactFormActions.openDialog());
