@@ -66,14 +66,14 @@ export const TeamCard = ({
                 >
                     <DialogBackdrop className="fixed inset-0 bg-black/70" />
                     <div className="fixed inset-0 flex w-screen items-center justify-center">
-                        <DialogPanel className="fixed flex flex-col gap-10 py-16 sm:py-10 md:py-20 px-4 sm:px-10 md:px-20 bg-white w-[90%] xl:w-[1280px] max-h-[calc(100vh_-_40px)] overflow-y-auto">
+                        <DialogPanel className="fixed flex flex-col gap-10 py-16 sm:py-10 md:py-20 px-4 sm:px-10 md:px-20 bg-white w-[90%] xl:w-[1280px] max-h-[calc(100vh_-_40px)] overflow-y-auto rounded-2xl">
                             <CloseIcon
                                 handleClick={() =>
                                     setDoctorInfoDialogOpen(false)
                                 }
                             />
                             <div className="flex flex-col sm:flex-row items-start gap-8">
-                                <div className="relative w-[326px] h-[489px] sm:w-[220px] sm:h-[330px] lg:w-[400px] lg:h-[600px] self-center">
+                                <div className="relative w-[326px] h-[489px] sm:w-[220px] sm:h-[330px] lg:w-[400px] lg:h-[600px]">
                                     <Image
                                         src={photoSrc}
                                         fill
@@ -81,8 +81,8 @@ export const TeamCard = ({
                                         className="rounded-2xl"
                                     />
                                 </div>
-                                <div className="flex flex-col sm:w-2/3">
-                                    <p className="text-[38px] md:text-[40px] lg:text-2xl font-bold">
+                                <div className="flex flex-col sm:w-5/12 xl:w-2/3">
+                                    <p className="text-[38px] md:text-[40px] lg:text-2xl font-bold leading-none">
                                         {title.toUpperCase()}
                                     </p>
                                     <p className="text-[38px] md:text-[40px] lg:text-2xl font-bold mb-2">

@@ -7,12 +7,12 @@ export const headerLinks = [
 ];
 
 export const heroSectionText = {
-    titleUkr: "нескраю",
-    titleEng: "neskrayu",
+    titleUkr: "незкраю",
+    titleEng: "nezkrayu",
     subtitleUkr: "медико-психологічний хаб",
     subtitleEng: "medical and psychological hub",
     mainUkr:
-        "здоров’я та добробут – це не просто слова, а ключові цінності, які впливають на наше щоденне життя та продуктивність. Саме тому ми створили центр, який є невід'ємною частиною нашої корпоративної культури та підходу роботи з клієнтами. Цей центр – це не лише місце, де ви можете отримати допомогу, але й символ нашої турботи та підтримки.",
+        "здоров’я та добробут – це не просто слова, а ключові цінності, які впливають на наше щоденне життя та продуктивність. саме тому ми створили центр, який є невід'ємною частиною нашої корпоративної культури та підходу роботи з клієнтами. цей центр – це не лише місце, де ви можете отримати допомогу, але й символ нашої турботи та підтримки.",
     mainEng:
         "health and well-being are not just words, but key values that affect our daily lives and productivity. that's why we have created a center that is an integral part of our corporate culture and customer service approach. this center is not only a place where you can get help, but also a symbol of our care and support.",
 };
@@ -130,8 +130,8 @@ export const contactsText = {
 };
 
 export const footerText = {
-    titleUkr: "нескраю",
-    titleEng: "neskrayu",
+    titleUkr: "незкраю",
+    titleEng: "nezkrayu",
     subtitleUkr: "медико-психологічний хаб",
     subtitleEng: "medical and psychological hub",
     fopUkr: "ФОП Рудковський Богдан Владиславович, ЄДРПОУ 3367101799",

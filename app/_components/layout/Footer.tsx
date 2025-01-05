@@ -12,7 +12,7 @@ export const Footer = () => {
     return (
         <footer className="flex flex-col gap-6 w-full px-4 md:px-10 lg:px-20 pt-20 pb-10 bg-primary">
             <div className="flex flex-col gap-10 xl:flex-row items-center">
-                <div className="flex flex-col md:flex-row gap-4 items-center justify-center w-full xl:w-2/3">
+                <div className="flex flex-col md:flex-row gap-4 items-center justify-center xl:justify-start w-full xl:w-2/3">
                     <Image
                         src="/logo.png"
                         height={140}

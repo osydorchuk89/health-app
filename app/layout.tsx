@@ -6,7 +6,7 @@ import { Footer } from "./_components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "нескраю",
+    title: "незкраю",
     description: "захист здоровʼя для всіх",
 };
 
