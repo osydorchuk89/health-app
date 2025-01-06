@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 
-import { ContactForm } from "../ContactForm";
-import { SectionTitle } from "../SectionTitle";
 import { useAppSelector } from "@/app/_store/hooks";
 import { contactUsText } from "@/app/_lib/data";
+import { ContactForm } from "../ContactForm";
+import { SectionTitle } from "../SectionTitle";
 
 export const ContactUs = () => {
     const { language } = useAppSelector((state) => state.language);

@@ -16,7 +16,14 @@ export interface LanguageState {
     language: string;
 }
 
-const chosenLanguage = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+let chosenLanguage;
+
+if (process.env.NODE_ENV === "production") {
+    chosenLanguage =
+        typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+} else {
+    chosenLanguage = localStorage.getItem("lang") || null;
+}
 
 const hasUkrainianLanguage = ["uk", "uk-UA"].some((item) =>
     navigator.languages.includes(item)

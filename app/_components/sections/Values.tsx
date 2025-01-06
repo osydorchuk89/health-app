@@ -1,27 +1,15 @@
 "use client";
 
-import { useInView } from "react-intersection-observer";
-
-import { navigationActions } from "@/app/_store";
-import { useAppDispatch, useAppSelector } from "@/app/_store/hooks";
+import { useAppSelector } from "@/app/_store/hooks";
 import { SectionTitle } from "../SectionTitle";
 import { valuesText } from "@/app/_lib/data";
 
 export const Values = () => {
-    const dispatch = useAppDispatch();
     const { language } = useAppSelector((state) => state.language);
-
-    const { ref } = useInView({
-        rootMargin: "-50% 0% -50% 0%",
-        onChange: (inView) => {
-            inView && dispatch(navigationActions.change("about"));
-        },
-    });
 
     return (
         <div
             id="values"
-            ref={ref}
             className="flex flex-col gap-10 px-4 md:px-10 lg:px-20 py-20 -scroll-mt-10"
         >
             <article className="flex flex-col gap-4 w-2/3">

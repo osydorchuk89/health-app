@@ -1,31 +1,17 @@
 "use client";
 
-import { useInView } from "react-intersection-observer";
-
-import { useAppDispatch, useAppSelector } from "@/app/_store/hooks";
-import { navigationActions } from "@/app/_store";
+import { useAppSelector } from "@/app/_store/hooks";
 import { teamArticles } from "@/app/_lib/data";
 import { TeamCard } from "../TeamCard";
 import { LeftArrow } from "../icons/LeftArrow";
 import { RightArrow } from "../icons/RightArrow";
 
 export const Team = () => {
-    const dispatch = useAppDispatch();
     const { language } = useAppSelector((state) => state.language);
-
-    const { ref } = useInView({
-        rootMargin: "-50% 0% -50% 0%",
-        onChange: (inView) => {
-            inView && dispatch(navigationActions.change("team"));
-        },
-    });
-
-    
 
     return (
         <div
             id="team"
-            ref={ref}
             className="relative flex flex-col gap-10 px-4 md:px-10 lg:px-20 py-20 -scroll-mt-10"
         >
             <p className="text-[40px] sm:text-[62px] md:text-3xl">
@@ -34,16 +20,33 @@ export const Team = () => {
             <div className="absolute left-4 md:left-10 lg:left-20 top-1/2 hidden lg:block">
                 <LeftArrow />
             </div>
-            <div className="flex justify-evenly lg:justify-center flex-nowrap gap-10 lg:gap-20 overflow-x-auto">
+            <div className="flex justify-start md:justify-evenly lg:justify-center flex-nowrap gap-9 md:gap-10 lg:gap-20 overflow-x-auto">
                 {teamArticles.map((article) => {
+                    const qualificationsFirst =
+                        language === "ua"
+                            ? article.qualificationsFirstUkr
+                            : article.qualificationsFirstEng;
+                    const qualificationsSecond =
+                        language === "ua"
+                            ? article.qualificationsSecondUkr
+                            : article.qualificationsSecondEng;
+                    const experienceFirst =
+                        language === "ua"
+                            ? article.experienceFirstUkr
+                            : article.experienceFirstEng;
+                    const experienceSecond =
+                        language === "ua"
+                            ? article.experienceSecondUkr
+                            : article.experienceSecondEng;
+                    const additionalExperienceFirst =
+                        language === "ua"
+                            ? article.additionalExperienceFirstUkr
+                            : article.additionalExperienceFirstEng;
+                    const additionalExperienceSecond =
+                        language === "ua"
+                            ? article.additionalExperienceSecondUkr
+                            : article.additionalExperienceSecondEng;
 
-                    const qualificationsFirst = language === "ua" ? article.qualificationsFirstUkr : article.qualificationsFirstEng;
-                    const qualificationsSecond = language === "ua" ? article.qualificationsSecondUkr : article.qualificationsSecondEng;
-                    const experienceFirst = language === "ua" ? article.experienceFirstUkr : article.experienceFirstEng;
-                    const experienceSecond = language === "ua" ? article.experienceSecondUkr : article.experienceSecondEng;
-                    const additionalExperienceFirst = language === "ua" ? article.additionalExperienceFirstUkr : article.additionalExperienceFirstEng;
-                    const additionalExperienceSecond = language === "ua" ? article.additionalExperienceSecondUkr : article.additionalExperienceSecondEng;
-                    
                     return (
                         <TeamCard
                             key={article.nameEng}
@@ -192,7 +195,7 @@ export const Team = () => {
                                 )}
                             </div>
                         </TeamCard>
-                    )
+                    );
                 })}
                 <div className="absolute right-4 md:right-10 lg:right-20 top-1/2 hidden lg:block">
                     <RightArrow />

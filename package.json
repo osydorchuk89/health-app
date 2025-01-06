@@ -13,10 +13,10 @@
     "@reduxjs/toolkit": "https://pkg.csb.dev/reduxjs/redux-toolkit/commit/436d29c1/@reduxjs/toolkit",
     "@types/react-phone-number-input": "^3.1.37",
     "axios": "^1.7.9",
+    "detect-it": "^4.0.1",
     "next": "15.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-intersection-observer": "^9.13.1",
     "react-phone-input-2": "^2.15.1",
     "react-phone-number-input": "^3.4.10",
     "react-redux": "https://pkg.csb.dev/reduxjs/react-redux/commit/3271037e/react-redux"

@@ -1,6 +1,7 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { useState } from "react";
 import { CloseIcon } from "./icons/CloseIcon";
+import { primaryInput } from "detect-it";
 
 interface ActivityDialogProps {
     title: string;
@@ -10,10 +11,21 @@ interface ActivityDialogProps {
 export const ActivityDialog = ({ title, text }: ActivityDialogProps) => {
     const [activityDialogOpen, setActivityDialogOpen] = useState(false);
 
+    const baseContainerClassName =
+        "flex justify-center items-center border-[3px] border-accent rounded-2xl px-6 h-24 md:h-36 cursor-pointer active:shadow-custom";
+    const mouseDeviceContainerClassName =
+        baseContainerClassName + " hover:shadow-custom active:bg-accent";
+
+    const isTouchDevice = primaryInput === "touch";
+
     return (
         <>
             <div
-                className="flex justify-center items-center border-[3px] border-accent rounded-2xl px-6 h-24 md:h-36 cursor-pointer hover:shadow-custom active:shadow-custom active:bg-accent"
+                className={
+                    isTouchDevice
+                        ? baseContainerClassName
+                        : mouseDeviceContainerClassName
+                }
                 onClick={() => setActivityDialogOpen(true)}
             >
                 <p className="text-lg font-medium text-center">{title}</p>

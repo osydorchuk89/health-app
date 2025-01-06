@@ -1,28 +1,16 @@
 "use client";
 
-import { useInView } from "react-intersection-observer";
-
-import { useAppDispatch, useAppSelector } from "@/app/_store/hooks";
-import { navigationActions } from "@/app/_store";
+import { useAppSelector } from "@/app/_store/hooks";
 import { ServiceCard } from "../ServiceCard";
 import { SectionTitle } from "../SectionTitle";
 import { servicesText } from "@/app/_lib/data";
 
 export const Services = () => {
-    const dispatch = useAppDispatch();
     const { language } = useAppSelector((state) => state.language);
-
-    const { ref } = useInView({
-        rootMargin: "-50% 0% -50% 0%",
-        onChange: (inView) => {
-            inView && dispatch(navigationActions.change("services"));
-        },
-    });
 
     return (
         <div
             id="services"
-            ref={ref}
             className="flex flex-col gap-10 px-4 md:px-10 lg:px-20 py-20 -scroll-mt-10"
         >
             <SectionTitle

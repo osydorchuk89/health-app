@@ -25,7 +25,7 @@ export const SideMenu = () => {
             >
                 <DialogBackdrop className="fixed inset-0 bg-black/70" />
                 <div className="fixed inset-0 flex w-screen items-center justify-center">
-                    <DialogPanel className="fixed flex flex-col justify-between items-center gap-20 py-20 rounded-2xl bg-white h-full w-2/3 md:1/2">
+                    <DialogPanel className="fixed flex flex-col justify-between items-center gap-20 py-20 rounded-2xl bg-white h-full w-3/4 md:1/2">
                         <CloseIcon handleClick={() => setSideMenuOpen(false)} />
                         <ul className="flex flex-col items-center gap-10">
                             {headerLinks.map((link) => (
