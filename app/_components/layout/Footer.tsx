@@ -39,7 +39,10 @@ export const Footer = () => {
             </div>
             <div className="flex flex-col items-center text-xxs">
                 <p className="text-center">
-                    {language === "ua" ? footerText.fopUkr : footerText.fopEng}
+                    {language === "ua" ? footerText.fopFirstUkr : footerText.fopFirstEng}
+                </p>
+                <p className="text-center">
+                    {language === "ua" ? footerText.fopSecondUkr : footerText.fopSecondEng}
                 </p>
                 <p className="text-center">
                     {language === "ua"

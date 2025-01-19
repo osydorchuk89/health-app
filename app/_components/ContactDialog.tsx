@@ -41,7 +41,7 @@ export const ContactDialog = () => {
                             декларацію
                         </p>
 
-                        <div className="flex gap-20">
+                        <div className="flex gap-20 items-center">
                             <ContactForm />
                             <Image
                                 src="/cat.png"

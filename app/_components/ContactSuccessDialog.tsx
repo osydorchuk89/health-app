@@ -11,36 +11,55 @@ import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { contactFormActions, successContactActions } from "../_store";
 import { contactUsText } from "@/app/_lib/data";
 
+interface SpecialistOption {
+    id: number;
+    nameUkr: string;
+    nameEng: string;
+}
+
 interface ContactSuccessDialogProps {
     name: string;
     phoneNumber: string;
+    specialist: SpecialistOption;
     handleNameError: (error: string) => void;
     handlePhoneNumberError: (error: string) => void;
+    handleSpecialistError: (error: string) => void;
     handleNameFieldFocus: (isFocused: boolean) => void;
     handlePhoneNumberFieldFocus: (isFocused: boolean) => void;
+    handleSpecialistFieldFocus: (isFocused: boolean) => void;
     handleNameValue: (value: string) => void;
     handlePhoneNumberValue: (value: string) => void;
+    handleSpecialistValue: (value: SpecialistOption) => void;
 }
 
 export const ContactSuccessDialog = ({
     name,
     phoneNumber,
+    specialist,
     handleNameError,
     handlePhoneNumberError,
+    handleSpecialistError,
     handleNameFieldFocus,
     handlePhoneNumberFieldFocus,
+    handleSpecialistFieldFocus,
     handleNameValue,
     handlePhoneNumberValue,
+    handleSpecialistValue,
 }: ContactSuccessDialogProps) => {
     const { isOpen } = useAppSelector((store) => store.successContactDialog);
     const { language } = useAppSelector((state) => state.language);
 
     const dispatch = useAppDispatch();
 
-    const validateInput = (name: string, phoneNumber: string) => {
+    const validateInput = (
+        name: string,
+        phoneNumber: string,
+        specialist: SpecialistOption
+    ) => {
         const errors = {
             name: "",
             phoneNumber: "",
+            specialist: "",
         };
         const trimmedName = name.trim();
         const trimmedPhoneNumber = phoneNumber.trim();
@@ -62,11 +81,17 @@ export const ContactSuccessDialog = ({
                     ? contactUsText.phoneInvalidErrorUkr
                     : contactUsText.phoneInvalidErrorEng;
         }
+        if (specialist.nameUkr === "оберіть спеціаліста") {
+            errors.specialist =
+                language === "ua"
+                    ? contactUsText.specialistErrorUkr
+                    : contactUsText.specialistErrorEng;
+        }
         return errors;
     };
 
-    const sendTelegramMessage = async (name: string, phoneNumber: string) => {
-        const message = `Ім'я: ${name}, номер телефону: ${phoneNumber}`;
+    const sendTelegramMessage = async (name: string, phoneNumber: string, specialist: string) => {
+        const message = `Ім'я: ${name}, номер телефону: ${phoneNumber}, обраний спеціаліст: ${specialist}`;
 
         const telegramToken = process.env.NEXT_PUBLIC_TELEGRAM_TOKEN;
         const telegramChatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
@@ -89,19 +114,30 @@ export const ContactSuccessDialog = ({
                 type="submit"
                 handleClick={async (event) => {
                     event.preventDefault();
-                    const errors = validateInput(name, phoneNumber);
-                    if (errors.name || errors.phoneNumber) {
+                    const errors = validateInput(name, phoneNumber, specialist);
+                    if (
+                        errors.name ||
+                        errors.phoneNumber ||
+                        errors.specialist
+                    ) {
                         handleNameError(errors.name);
                         handlePhoneNumberError(errors.phoneNumber);
+                        handleSpecialistError(errors.specialist);
                         handleNameFieldFocus(false);
                         handlePhoneNumberFieldFocus(false);
+                        handleSpecialistFieldFocus(false);
                         return;
                     }
 
-                    await sendTelegramMessage(name, phoneNumber);
+                    await sendTelegramMessage(name, phoneNumber, specialist.nameUkr);
 
                     handleNameValue("");
                     handlePhoneNumberValue("");
+                    handleSpecialistValue({
+                        id: 0,
+                        nameUkr: contactUsText.dropDownTitleUkr,
+                        nameEng: contactUsText.dropDownTitleEng,
+                    });
                     dispatch(successContactActions.openDialog());
                     dispatch(contactFormActions.closeDialog());
                 }}

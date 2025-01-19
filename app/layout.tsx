@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Providers } from "./StoreProvider";
 import { Header } from "./_components/layout/Header";
 import { Footer } from "./_components/layout/Footer";
+import { ScrollUpButton } from "./_components/ScrollUpButton";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
                     <Header />
                     {children}
                     <Footer />
+                    <ScrollUpButton/>
                 </body>
             </html>
         </Providers>

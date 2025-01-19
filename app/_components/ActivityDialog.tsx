@@ -12,9 +12,9 @@ export const ActivityDialog = ({ title, text }: ActivityDialogProps) => {
     const [activityDialogOpen, setActivityDialogOpen] = useState(false);
 
     const baseContainerClassName =
-        "flex justify-center items-center border-[3px] border-accent rounded-2xl px-6 h-24 md:h-36 cursor-pointer active:shadow-custom";
+        "flex justify-center items-center border-[3px] border-accent rounded-2xl px-6 h-24 md:h-36 cursor-pointer active:shadow-custom active:bg-accent active:border-accent";
     const mouseDeviceContainerClassName =
-        baseContainerClassName + " hover:shadow-custom active:bg-accent";
+        baseContainerClassName + " hover:shadow-custom hover:border-accent";
 
     const isTouchDevice = primaryInput === "touch";
 

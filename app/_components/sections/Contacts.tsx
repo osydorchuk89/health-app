@@ -4,6 +4,7 @@ import { useAppSelector } from "@/app/_store/hooks";
 import { ContactCard } from "../ContactCard";
 import { SectionTitle } from "../SectionTitle";
 import { contactsText } from "@/app/_lib/data";
+import { GoogleMapFrame } from "../GoogleMapFrame";
 
 export const Contacts = () => {
     const { language } = useAppSelector((state) => state.language);
@@ -51,7 +52,9 @@ export const Contacts = () => {
                         </ContactCard>
                     </div>
                 </div>
-                <div className="bg-neutral rounded-2xl h-80 w-full xl:w-2/5"></div>
+                <div className="rounded-2xl w-full xl:w-2/5">
+                    <GoogleMapFrame />
+                </div>
             </div>
         </div>
     );

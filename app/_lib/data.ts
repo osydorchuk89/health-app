@@ -54,6 +54,8 @@ export const contactUsText = {
     nameInputPlaceholderEng: "enter Your name",
     phoneInputTitleUkr: "Ваш номер телефону",
     phoneInputTitleEng: "Your phone number",
+    dropDownTitleUkr: "оберіть спеціаліста",
+    dropDownTitleEng: "choose a specialist",
     buttonUkr: "передзвонити",
     buttonEng: "call me back",
     nameErrorUkr: "Будь-ласка, введіть Ваше ім'я",
@@ -62,7 +64,22 @@ export const contactUsText = {
     phoneBlankErrorEng: "Please enter your phone number",
     phoneInvalidErrorUkr: "Будь-ласка, введіть коректний номер телефону",
     phoneInvalidErrorEng: "Please enter a valid phone number",
+    specialistErrorUkr: "Будь-ласка, оберіть спеціаліста",
+    specialistErrorEng: "Please choose a specialist",
 };
+
+export const dropDownOptions = [
+    {
+        id: 1,
+        nameUkr: "Богдан (лікар)",
+        nameEng: "Bohdan (doctor)",
+    },
+    {
+        id: 2,
+        nameUkr: "Євгенія (психологиня)",
+        nameEng: "Yevheniya (psychologist)",
+    },
+];
 
 export const valuesText = {
     titleUkr: "цінності",
@@ -134,8 +151,10 @@ export const footerText = {
     titleEng: "nezkrayu",
     subtitleUkr: "медико-психологічний хаб",
     subtitleEng: "medical and psychological hub",
-    fopUkr: "ФОП Рудковський Богдан Владиславович, ЄДРПОУ 3367101799",
-    fopEng: "FOP Rudkovskyi Bohdan Vladyslavovych, EDRPOU 3367101799",
+    fopFirstUkr: "ФОП Рудковський Богдан Владиславович, ЄДРПОУ 3367101799",
+    fopFirstEng: "FOP Rudkovskyi Bohdan Vladyslavovych, EDRPOU 3367101799",
+    fopSecondUkr: "ФОП Рудковська Євгенія Тимофіївна, ЄДРПОУ 3189702924",
+    fopSecondEng: "FOP Rudkovska Yevheniya Tymofiyivna, EDRPOU 3189702924",
     licenseUkr:
         'Ліцензія на провадчення медичної практики "Наказ МОЗ України №2984 від 23.12.2020"',
     licenseEng:
@@ -181,8 +200,6 @@ export const teamArticles = [
             "program “Leading organizations in a new era” UCU LvBS (2023)",
             "Business Prescriptions for Medical Centers program at UCU LvBS (2024)",
         ],
-        experienceTitleUkr: "професійний досвід",
-        experienceTitleEng: "professional experience",
         experienceFirstUkr: [
             "студентські роки: фельдшер станції швидкої та невідкладної медичної допомоги, медичний брат у кардіологічному відділенні.",
             "інтернатура: проходив на базі кардіологічного відділення та паралельно працював менеджером з громадської охорони здоров’я при гуманітарній місії на Сході України.",
@@ -201,19 +218,18 @@ export const teamArticles = [
             "private practice: in 2020, he started a private medical practice in Mariupol.",
             "full-scale invasion: from the first days he was forced to move to Ivano-Frankivsk, where he was a coordinator of the treatment process and a doctor of the mobile team at the First Volunteer Surgical Hospital initiative.",
         ],
-        additionalExperience: true,
-        additionalExperienceTitleUkr: "додаткова професійна діяльність",
-        additionalExperienceTitleEng: "additional professional activities",
-        additionalExperienceFirstUkr: [
+        additionalInfoTitleUkr: "додаткова професійна діяльність",
+        additionalInfoTitleEng: "additional professional activities",
+        additionalInfoFirstUkr: [
             "Фасилітатор безперервного розвитку лікарів ПМД «групи рівних» україно-швейцарський проєкт розвитку медичної освіти;",
         ],
-        additionalExperienceFirstEng: [
+        additionalInfoFirstEng: [
             "facilitator of the continuous development of primary care physicians “peer groups” Ukrainian-Swiss project for the development of medical education; ",
         ],
-        additionalExperienceSecondUkr: [
+        additionalInfoSecondUkr: [
             "Переможець (команда свої.рідні) HealthHachathonUA у категорії серцево-судинні захворювання та цукровий діабет від Harvard Health System Innovation Lab, WHO Ukraine (2024).",
         ],
-        additionalExperienceSecondEng: [
+        additionalInfoSecondEng: [
             "winner (team vse.kin) of the HealthHachathonUA in the category Cardiovascular Diseases and Diabetes from Harvard Health System Innovation Lab, WHO Ukraine (2024).",
         ],
         photoSrc: "/bohdan-big-photo.png",
@@ -259,35 +275,42 @@ export const teamArticles = [
             "“CBT approach to coping with professional stress and preventing burnout” at UCU (2023).",
             "“CBT model of suicide management” at UCU (2023).",
         ],
-        experienceTitleUkr: "основні напрямки праці",
-        experienceTitleEng: "main areas of work",
         experienceFirstUkr: [
+            "гуманітарна місія: на початку війни в 2014 році активно здобувала нові компетенції кризової психології та починаючи з 2015 року працювала в багатьох міжнародних і місцевих організаціях, надаючи психологічну допомогу постраждалому населенню на Сході України. До  повномасштабного вторгнення працювала психологом мобільної бригади психологічної допомоги дітям від unicef, психологом мобільної бригади по роботі з мешканцями буферної зони в секторі М. З початку повномасштабного вторгнення активно працювала з усіма категоріями населення, які постраждали від війни в команді “Лікарів без кордонів”.",
+        ],
+        experienceFirstEng: [
+            "humanitarian mission: at the beginning of the war in 2014, she actively acquired new competencies in crisis psychology and since 2015 has worked for many international and local organizations, providing psychological assistance to the affected population in eastern Ukraine. Prior to the full-scale invasion, she worked as a psychologist of the unicef mobile team for psychological assistance to children, a psychologist of the mobile team for working with residents of the buffer zone in sector M. Since the beginning of the full-scale invasion, she has been actively working with all categories of the population affected by the war in the team of Doctors Without Borders.",
+        ],
+        experienceSecondUkr: [
+            "робота з військовими: психолог в центрі травматерапії “Відновлення”, робота якого була присвячена військовим, сім'ям військових та людям, які втратили близьких через військову агресію росії на Сході України, психолог у складі Першого добровольчого хірургічного шпиталю.",
+            "приватна практика: психологічна практика, експертна діяльність, корпоративні консультації, групові сесії, проектна діяльність з 2015 року.",
+        ],
+        experienceSecondEng: [
+            "work with the military: a psychologist at the Restoration Trauma Center, whose work was dedicated to the military, military families and people who lost loved ones due to Russia's military aggression in eastern Ukraine, a psychologist at the First Volunteer Surgical Hospital.",
+            "private practice: psychological practice, expert activities, corporate consultations, group sessions, project activities since 2015.",
+        ],
+        additionalInfoTitleUkr: "основні напрямки праці",
+        additionalInfoTitleEng: "main areas of work",
+        additionalInfoFirstUkr: [
             "міжособистісна психологія.",
             "психологічний супровід людини з втратою.",
             "психологічний супровід складних випадків (самоушкодження, РХП, суїцид).",
         ],
-        experienceFirstEng: [
+        additionalInfoFirstEng: [
             "interpersonal psychology.",
             "psychological support of a bereaved person.",
             "psychological support for difficult cases (self-harm, substance abuse, suicide).",
         ],
-        experienceSecondUkr: [
+        additionalInfoSecondUkr: [
             "практики психологічного відновлення.",
             "резильєнтність та плекання життєстійкості.",
             "профілактика емоційного вигорання.",
         ],
-        experienceSecondEng: [
+        additionalInfoSecondEng: [
             "psychological recovery practices.",
             "resilience and building resilience.",
             "prevention of emotional burnout.",
         ],
-        additionalExperience: false,
-        additionalExperienceTitleUkr: null,
-        additionalExperienceTitleEng: null,
-        additionalExperienceFirstUkr: null,
-        additionalExperienceFirstEng: null,
-        additionalExperienceSecondUkr: null,
-        additionalExperienceSecondEng: null,
         photoSrc: "/yevheniya-big-photo.jpg",
         logoSrc: "/cbt.png",
         logoWidth: 133,

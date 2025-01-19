@@ -2,11 +2,7 @@
 
 import { useState } from "react";
 
-interface SocialMediaIconProps {
-    handleClick?: React.MouseEventHandler<SVGSVGElement>;
-}
-
-export const TelegramIcon = ({ handleClick }: SocialMediaIconProps) => {
+export const TelegramIcon = () => {
     const [telegramIconHovered, setTelegramIconHovered] = useState(false);
 
     return (
@@ -17,7 +13,6 @@ export const TelegramIcon = ({ handleClick }: SocialMediaIconProps) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="cursor-pointer"
-            onClick={handleClick}
             onMouseEnter={() => setTelegramIconHovered(true)}
             onMouseLeave={() => setTelegramIconHovered(false)}
         >
@@ -29,7 +24,7 @@ export const TelegramIcon = ({ handleClick }: SocialMediaIconProps) => {
     );
 };
 
-export const InstagramIcon = ({ handleClick }: SocialMediaIconProps) => {
+export const InstagramIcon = () => {
     const [instagramIconHovered, setInstagramIconHovered] = useState(false);
 
     return (
@@ -40,7 +35,6 @@ export const InstagramIcon = ({ handleClick }: SocialMediaIconProps) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="cursor-pointer"
-            onClick={handleClick}
             onMouseEnter={() => setInstagramIconHovered(true)}
             onMouseLeave={() => setInstagramIconHovered(false)}
         >
@@ -52,7 +46,7 @@ export const InstagramIcon = ({ handleClick }: SocialMediaIconProps) => {
     );
 };
 
-export const YoutubeIcon = ({ handleClick }: SocialMediaIconProps) => {
+export const YoutubeIcon = () => {
     const [youtubeIconHovered, setYoutubeIconHovered] = useState(false);
 
     return (
@@ -63,13 +57,34 @@ export const YoutubeIcon = ({ handleClick }: SocialMediaIconProps) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="cursor-pointer"
-            onClick={handleClick}
             onMouseEnter={() => setYoutubeIconHovered(true)}
             onMouseLeave={() => setYoutubeIconHovered(false)}
         >
             <path
                 d="M10 15L15.19 12L10 9V15ZM21.56 7.17C21.69 7.64 21.78 8.27 21.84 9.07C21.91 9.87 21.94 10.56 21.94 11.16L22 12C22 14.19 21.84 15.8 21.56 16.83C21.31 17.73 20.73 18.31 19.83 18.56C19.36 18.69 18.5 18.78 17.18 18.84C15.88 18.91 14.69 18.94 13.59 18.94L12 19C7.81 19 5.2 18.84 4.17 18.56C3.27 18.31 2.69 17.73 2.44 16.83C2.31 16.36 2.22 15.73 2.16 14.93C2.09 14.13 2.06 13.44 2.06 12.84L2 12C2 9.81 2.16 8.2 2.44 7.17C2.69 6.27 3.27 5.69 4.17 5.44C4.64 5.31 5.5 5.22 6.82 5.16C8.12 5.09 9.31 5.06 10.41 5.06L12 5C16.19 5 18.8 5.16 19.83 5.44C20.73 5.69 21.31 6.27 21.56 7.17Z"
                 fill={youtubeIconHovered ? "#00AA4F" : "black"}
+            />
+        </svg>
+    );
+};
+
+export const FacebookIcon = () => {
+    const [facebookIconHovered, setFacebookIconHovered] = useState(false);
+
+    return (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="cursor-pointer"
+            onMouseEnter={() => setFacebookIconHovered(true)}
+            onMouseLeave={() => setFacebookIconHovered(false)}
+        >
+            <path
+                d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 16.84 5.44 20.87 10 21.8V15H8V12H10V9.5C10 7.57 11.57 6 13.5 6H16V9H14C13.45 9 13 9.45 13 10V12H16V15H13V21.95C18.05 21.45 22 17.19 22 12Z"
+                fill={facebookIconHovered ? "#00AA4F" : "black"}
             />
         </svg>
     );

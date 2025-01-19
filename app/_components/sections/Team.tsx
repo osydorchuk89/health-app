@@ -3,8 +3,7 @@
 import { useAppSelector } from "@/app/_store/hooks";
 import { teamArticles } from "@/app/_lib/data";
 import { TeamCard } from "../TeamCard";
-import { LeftArrow } from "../icons/LeftArrow";
-import { RightArrow } from "../icons/RightArrow";
+import { LeftArrow, RightArrow } from "../icons/Arrows";
 
 export const Team = () => {
     const { language } = useAppSelector((state) => state.language);
@@ -38,14 +37,18 @@ export const Team = () => {
                         language === "ua"
                             ? article.experienceSecondUkr
                             : article.experienceSecondEng;
-                    const additionalExperienceFirst =
+                    const additionalTitle =
                         language === "ua"
-                            ? article.additionalExperienceFirstUkr
-                            : article.additionalExperienceFirstEng;
-                    const additionalExperienceSecond =
+                            ? article.additionalInfoTitleUkr
+                            : article.additionalInfoTitleEng;
+                    const additionalInfoFirst =
                         language === "ua"
-                            ? article.additionalExperienceSecondUkr
-                            : article.additionalExperienceSecondEng;
+                            ? article.additionalInfoFirstUkr
+                            : article.additionalInfoFirstEng;
+                    const additionalInfoSecond =
+                        language === "ua"
+                            ? article.additionalInfoSecondUkr
+                            : article.additionalInfoSecondEng;
 
                     return (
                         <TeamCard
@@ -90,111 +93,14 @@ export const Team = () => {
                             logoSrc={article.logoSrc}
                             logoWidth={article.logoWidth}
                             logoHeight={article.logoHeight}
-                        >
-                            <div className="flex flex-col gap-20">
-                                <div className="flex flex-col gap-6">
-                                    <p className="text-[40px] sm:text-[62px] md:text-3xl leading-none">
-                                        {language === "ua"
-                                            ? "підвищення кваліфікації та компетенцій"
-                                            : "improving skills and competencies"}
-                                    </p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 ml-5">
-                                        <ul className="list-disc">
-                                            {qualificationsFirst.map(
-                                                (qualification) => (
-                                                    <li
-                                                        className="text-base"
-                                                        key={qualification}
-                                                    >
-                                                        {qualification}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                        <ul className="list-disc">
-                                            {qualificationsSecond.map(
-                                                (qualification) => (
-                                                    <li
-                                                        className="text-base"
-                                                        key={qualification}
-                                                    >
-                                                        {qualification}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col gap-6">
-                                    <p className="text-[40px] sm:text-[62px] md:text-3xl leading-none">
-                                        {language === "ua"
-                                            ? article.experienceTitleUkr
-                                            : article.experienceTitleEng}
-                                    </p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 ml-5">
-                                        <ul className="list-disc">
-                                            {experienceFirst.map(
-                                                (experience) => (
-                                                    <li
-                                                        className="text-base"
-                                                        key={experience}
-                                                    >
-                                                        {experience}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                        <ul className="list-disc">
-                                            {experienceSecond.map(
-                                                (experience) => (
-                                                    <li
-                                                        className="text-base"
-                                                        key={experience}
-                                                    >
-                                                        {experience}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                    </div>
-                                </div>
-                                {article.additionalExperience && (
-                                    <div className="flex flex-col gap-6">
-                                        <p className="text-[40px] sm:text-[62px] md:text-3xl leading-none">
-                                            {language === "ua"
-                                                ? article.additionalExperienceTitleUkr
-                                                : article.additionalExperienceTitleEng}
-                                        </p>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 ml-5">
-                                            <ul className="list-disc">
-                                                {additionalExperienceFirst!.map(
-                                                    (experience) => (
-                                                        <li
-                                                            className="text-base"
-                                                            key={experience}
-                                                        >
-                                                            {experience}
-                                                        </li>
-                                                    )
-                                                )}
-                                            </ul>
-                                            <ul className="list-disc">
-                                                {additionalExperienceSecond!.map(
-                                                    (experience) => (
-                                                        <li
-                                                            className="text-base"
-                                                            key={experience}
-                                                        >
-                                                            {experience}
-                                                        </li>
-                                                    )
-                                                )}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </TeamCard>
+                            qualificationsFirst={qualificationsFirst}
+                            qualificationsSecond={qualificationsSecond}
+                            experienceFirst={experienceFirst}
+                            experienceSecond={experienceSecond}
+                            additionalTitle={additionalTitle}
+                            additionalInfoFirst={additionalInfoFirst}
+                            additionalInfoSecond={additionalInfoSecond}
+                        />
                     );
                 })}
                 <div className="absolute right-4 md:right-10 lg:right-20 top-1/2 hidden lg:block">

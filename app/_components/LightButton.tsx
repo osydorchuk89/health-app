@@ -1,13 +1,16 @@
 interface ButtonProps {
     text: string;
-    // type?: "submit" | "reset" | "button" | undefined;
+    additionalButtonStyle?: string;
     handleClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const LightButton = ({ text, handleClick }: ButtonProps) => {
+export const LightButton = ({ text, additionalButtonStyle, handleClick }: ButtonProps) => {
+
+    const basicButtonStyles = "rounded-lg border-[3px] border-accent hover:shadow-custom active:bg-accent ";
+
     return (
         <button
-            className="px-4 py-1 rounded-lg text-xxs border-[3px] border-accent hover:shadow-custom active:bg-accent"
+            className={basicButtonStyles + additionalButtonStyle}
             onClick={handleClick}
         >
             {text}

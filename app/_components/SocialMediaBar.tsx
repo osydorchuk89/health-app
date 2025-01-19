@@ -1,4 +1,6 @@
+import Link from "next/link";
 import {
+    FacebookIcon,
     InstagramIcon,
     TelegramIcon,
     YoutubeIcon,
@@ -16,9 +18,24 @@ export const SocialMediaBar = ({ alignment }: SocialMediaBarProps) => {
 
     return (
         <ul className={style}>
-            <TelegramIcon />
-            <InstagramIcon />
-            <YoutubeIcon />
+            <Link href="https://t.me/nezkrayu" target="_blank">
+                <TelegramIcon />
+            </Link>
+            <Link
+                href="https://www.facebook.com/profile.php?id=61566037723088&locale=uk_UA"
+                target="_blank"
+            >
+                <FacebookIcon />
+            </Link>
+            <Link href="https://www.instagram.com/nezkrayu" target="_blank">
+                <InstagramIcon />
+            </Link>
+            <Link
+                href="https://youtube.com/@nezkrayu?si=OQRriqQtya_5SM5J"
+                target="_blank"
+            >
+                <YoutubeIcon />
+            </Link>
         </ul>
     );
 };
