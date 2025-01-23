@@ -12,7 +12,6 @@
     "@headlessui/react": "^2.2.0",
     "@next/third-parties": "^15.1.4",
     "@reduxjs/toolkit": "https://pkg.csb.dev/reduxjs/redux-toolkit/commit/436d29c1/@reduxjs/toolkit",
-    "@types/react-phone-number-input": "^3.1.37",
     "axios": "^1.7.9",
     "detect-it": "^4.0.1",
     "next": "^15.1.4",
