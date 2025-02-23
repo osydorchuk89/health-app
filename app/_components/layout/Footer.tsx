@@ -5,6 +5,7 @@ import Image from "next/image";
 import { SocialMediaBar } from "../SocialMediaBar";
 import { useAppSelector } from "@/app/_store/hooks";
 import { footerText } from "@/app/_lib/data";
+import Link from "next/link";
 
 export const Footer = () => {
     const { language } = useAppSelector((state) => state.language);
@@ -53,14 +54,13 @@ export const Footer = () => {
                         ? footerText.licenseUkr
                         : footerText.licenseEng}
                 </p>
-                <p className="pt-4 cursor-pointer hover:underline">
-                    <a
-                        href="https://www.behance.net/gallery/218744801/Landing-for-medical-and-psychological-hub"
-                        target="_blank"
-                    >
-                        Design 2025
-                    </a>
-                </p>
+                <Link
+                    href="https://www.behance.net/gallery/218744801/Landing-for-medical-and-psychological-hub"
+                    target="_blank"
+                    className="font-semibold pt-4 cursor-pointer hover:underline"
+                >
+                    Design 2025
+                </Link>
             </div>
         </footer>
     );

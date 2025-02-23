@@ -16,21 +16,6 @@ export interface LanguageState {
     language: string;
 }
 
-let chosenLanguage;
-
-if (process.env.NODE_ENV === "production") {
-    chosenLanguage =
-        typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-} else {
-    chosenLanguage = localStorage.getItem("lang") || null;
-}
-
-const hasUkrainianLanguage = ["uk", "uk-UA"].some((item) =>
-    navigator.languages.includes(item)
-);
-const inferredLanguage = hasUkrainianLanguage ? "ua" : "en";
-const initialLanguage = chosenLanguage ?? inferredLanguage;
-
 const navigationSlice = createSlice({
     name: "navigation",
     initialState: { section: "none" },
@@ -69,8 +54,12 @@ const successContactDialogSlice = createSlice({
 
 const languageSlice = createSlice({
     name: "language",
-    initialState: { language: initialLanguage },
-    reducers: {},
+    initialState: { language: "ua" },
+    reducers: {
+        setLanguage(state, action) {
+            state.language = action.payload;
+        },
+    },
 });
 
 export const store = configureStore({
@@ -84,6 +73,7 @@ export const store = configureStore({
 export const navigationActions = navigationSlice.actions;
 export const contactFormActions = contactFormDialogSlice.actions;
 export const successContactActions = successContactDialogSlice.actions;
+export const languageActions = languageSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
