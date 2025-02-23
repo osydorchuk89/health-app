@@ -39,15 +39,27 @@ export const Footer = () => {
             </div>
             <div className="flex flex-col items-center text-xxs">
                 <p className="text-center">
-                    {language === "ua" ? footerText.fopFirstUkr : footerText.fopFirstEng}
+                    {language === "ua"
+                        ? footerText.fopFirstUkr
+                        : footerText.fopFirstEng}
                 </p>
                 <p className="text-center">
-                    {language === "ua" ? footerText.fopSecondUkr : footerText.fopSecondEng}
+                    {language === "ua"
+                        ? footerText.fopSecondUkr
+                        : footerText.fopSecondEng}
                 </p>
                 <p className="text-center">
                     {language === "ua"
                         ? footerText.licenseUkr
                         : footerText.licenseEng}
+                </p>
+                <p className="pt-4 cursor-pointer hover:underline">
+                    <a
+                        href="https://www.behance.net/gallery/218744801/Landing-for-medical-and-psychological-hub"
+                        target="_blank"
+                    >
+                        Design 2025
+                    </a>
                 </p>
             </div>
         </footer>
