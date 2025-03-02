@@ -57,7 +57,7 @@ export const Footer = () => {
                 <Link
                     href="https://www.behance.net/gallery/218744801/Landing-for-medical-and-psychological-hub"
                     target="_blank"
-                    className="font-semibold pt-4 cursor-pointer hover:underline"
+                    className="font-semibold pt-4 cursor-pointer hover:underline z-10"
                 >
                     Design 2025
                 </Link>
